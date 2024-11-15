@@ -6,15 +6,54 @@ import java.util.stream.Collectors;
 import java.text.*;
 
 public class App {
-    private Scanner scanner;
+    private Scanner scan;
+    public ArrayList<Comanda> comenzi = new ArrayList<>();
+    static ArrayList<String> oldAlegeriIDs = new ArrayList<>();
+//    static Scanner scan;
+//    static int status;
 
+    public App(){}
     public App(InputStream input) {
-        this.scanner = new Scanner(input);
+        this.scan = new Scanner(input);
     }
 
     public void run() {
         // Implementați aici cerințele din enunț
         // Pentru citirea datelor de la tastatura se folosește câmpul scanner.
+
+        String temp = scan.nextLine();
+
+        while (!temp.isBlank()) {
+            int iD = Integer.parseInt(temp);
+            if (iD == 18 || iD == 17) {
+                oldAlegeriIDs.clear();
+                return;
+            }
+            temp = scan.nextLine();
+            Comanda aux = null;
+            switch (iD) {
+                case 0:
+                    aux = new CreareAlegeri(temp);
+                    comenzi.add(aux);
+                    break;
+
+                case 1:
+
+                    break;
+
+//                case 18:
+//                    // do nothing
+//                    return;
+
+            }
+            temp = scan.nextLine();
+
+//            status = 1;
+
+        }
+        return;
+
+
     }
 
     public static void main(String[] args) {
