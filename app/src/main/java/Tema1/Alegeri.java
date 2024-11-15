@@ -25,16 +25,25 @@ public class Alegeri extends App {
     }
 
     public Alegeri(String idAlegeri, String numeAlegeri) {
-        for (int i = 0;  i < oldAlegeriIDs.size(); i++) {
-            if (oldAlegeriIDs.get(i).equals(idAlegeri)) {
+        for (int i = 0;  i < oldAlegeri.size(); i++) {
+            if (oldAlegeri.get(i).idAlegeri.equals(idAlegeri)) {
                 System.out.println("EROARE: Deja exista alegeri cu id " + idAlegeri);
                 return;
             }
         }
-        oldAlegeriIDs.add(idAlegeri);
         this.idAlegeri = idAlegeri;
         this.numeAlegeri = numeAlegeri;
         System.out.println("S-au creat alegerile " + numeAlegeri);
+        oldAlegeri.add(this);
+    }
+
+    public void startAlegeri() {
+        if (status == 0) {
+            status = 1;
+            System.out.println("Au pornit alegerile " + numeAlegeri);
+        } else {
+            System.out.println("EROARE: Alegerile deja au inceput.");
+        }
     }
 
 }

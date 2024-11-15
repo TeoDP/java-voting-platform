@@ -8,7 +8,7 @@ import java.text.*;
 public class App {
     private Scanner scan;
     public ArrayList<Comanda> comenzi = new ArrayList<>();
-    static ArrayList<String> oldAlegeriIDs = new ArrayList<>();
+    static ArrayList<Alegeri> oldAlegeri = new ArrayList<>();
 //    static Scanner scan;
 //    static int status;
 
@@ -26,7 +26,7 @@ public class App {
         while (!temp.isBlank()) {
             int iD = Integer.parseInt(temp);
             if (iD == 18 || iD == 17) {
-                oldAlegeriIDs.clear();
+                oldAlegeri.clear();
                 return;
             }
             temp = scan.nextLine();
@@ -38,17 +38,12 @@ public class App {
                     break;
 
                 case 1:
+                    aux = new StartAlegeri(temp);
 
                     break;
 
-//                case 18:
-//                    // do nothing
-//                    return;
-
             }
             temp = scan.nextLine();
-
-//            status = 1;
 
         }
         return;
