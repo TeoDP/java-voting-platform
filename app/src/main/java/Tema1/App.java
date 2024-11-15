@@ -49,6 +49,9 @@ public class App {
                     aux = new AdaugareCircumscriptie(temp);
                     break;
 
+                case 3:
+                    aux = new EliminareCircumscriptie(temp);
+                    break;
             }
             temp = scan.nextLine();
 

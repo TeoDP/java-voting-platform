@@ -6,6 +6,10 @@ public class Circumscriptie extends AdaugareCircumscriptie{
     private String numeCircumscriptie;
     private String regiuneCircumscriptie;
 
+    public String getNumeCircumscriptie() {
+        return numeCircumscriptie;
+    }
+
     public Circumscriptie(){}
 
     public Circumscriptie(String idAlegeri, String numeCircumscriptie, String regiuneCircumscriptie){

@@ -82,7 +82,7 @@ class AdaugareCircumscriptie extends Comanda {
 
         int bec = -1;
         for (int i = 0; i < oldAlegeri.size(); i++) {
-            if (oldAlegeri.get(i).equals(idAlegeri)) {
+            if (oldAlegeri.get(i).getIdAlegeri().equals(idAlegeri)) {
                 bec = i;
             }
         }
@@ -95,5 +95,43 @@ class AdaugareCircumscriptie extends Comanda {
         }
         Circumscriptie circumscriptie = new Circumscriptie(split[0], split[1], split[2]);
         circumscriptii.add(circumscriptie);
+    }
+}
+
+class EliminareCircumscriptie extends Comanda {
+    public String idAlegeri;
+    private String numeCircumscriptie;
+
+    public EliminareCircumscriptie() {}
+
+    public EliminareCircumscriptie(String arguments) {
+        iD = 3;
+        String[] split = arguments.split(" ");
+//        this.arguments.add(split[0]);
+        idAlegeri = split[0];
+        numeCircumscriptie = split[1];
+
+        int bec = -1;
+        for (int i = 0; i < oldAlegeri.size(); i++) {
+            if (oldAlegeri.get(i).getIdAlegeri().equals(idAlegeri)) {
+                bec = i;
+            }
+        }
+        if (bec == -1) {
+            System.out.println("EROARE: Nu exista alegeri cu acest id");
+            return;
+        } else if (oldAlegeri.get(bec).getStatus() != 1 ) {
+            System.out.println("EROARE: Nu este perioada de votare");
+        }
+
+        for (int i = 0; i < circumscriptii.size(); i++) {
+            if (circumscriptii.get(i).getNumeCircumscriptie().equals(numeCircumscriptie)) {
+                circumscriptii.remove(i);
+                System.out.println("S-a sters circumscriptia " + numeCircumscriptie);
+                return;
+            }
+        }
+        System.out.println("EROARE: Nu exista o circumscriptie cu numele " + numeCircumscriptie);
+
     }
 }
