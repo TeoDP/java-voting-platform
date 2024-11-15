@@ -50,15 +50,50 @@ class CreareAlegeri extends Comanda {
 
 class StartAlegeri extends Comanda {
 
-    public StartAlegeri() {}
+    public StartAlegeri() {
+        iD = 1;
+    }
 
     public StartAlegeri(String iDAlegeri) {
+        iD = 1;
         Alegeri aux = findAlegere(iDAlegeri);
         if (aux == null) {
             return;
         }
         aux.startAlegeri();
     }
+}
 
+class AdaugareCircumscriptie extends Comanda {
+    public String idAlegeri;
 
+    public AdaugareCircumscriptie() {}
+
+    public AdaugareCircumscriptie(String arguments) {
+        iD = 2;
+        String[] split = arguments.split(" ");
+        this.arguments.add(split[0]);
+//        String temp[] = null;
+//        for (int i = 1; i < split.length; i++) {
+//            temp += split[i] + " ";
+//        }
+//        this.arguments.add(temp);
+        idAlegeri = this.arguments.get(0);
+
+        int bec = -1;
+        for (int i = 0; i < oldAlegeri.size(); i++) {
+            if (oldAlegeri.get(i).equals(idAlegeri)) {
+                bec = i;
+            }
+        }
+        if (bec == -1) {
+            System.out.println("EROARE: Nu exista alegeri cu acest id");
+            return;
+        } else if (oldAlegeri.get(bec).getStatus() != 1 ) {
+            System.out.println("EROARE: Nu este perioada de votare");
+            return;
+        }
+        Circumscriptie circumscriptie = new Circumscriptie(split[0], split[1], split[2]);
+        circumscriptii.add(circumscriptie);
+    }
 }

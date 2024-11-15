@@ -24,6 +24,10 @@ public class Alegeri extends App {
         this.numeAlegeri = numeAlegeri;
     }
 
+    public int getStatus() {
+        return this.status;
+    }
+
     public Alegeri(String idAlegeri, String numeAlegeri) {
         for (int i = 0;  i < oldAlegeri.size(); i++) {
             if (oldAlegeri.get(i).idAlegeri.equals(idAlegeri)) {
