@@ -44,7 +44,7 @@ class CreareAlegeri extends Comanda {
         numeAlegeri = this.arguments.get(1);
 
         Alegeri alegeri = new Alegeri(iDAlegeri, numeAlegeri);
-        oldAlegeri.add(alegeri);
+//        oldAlegeri.add(alegeri);
     }
 }
 
@@ -94,7 +94,7 @@ class AdaugareCircumscriptie extends Comanda {
             return;
         }
         Circumscriptie circumscriptie = new Circumscriptie(split[0], split[1], split[2]);
-        circumscriptii.add(circumscriptie);
+        oldAlegeri.get(bec).circumscriptii.add(circumscriptie);
     }
 }
 
@@ -124,9 +124,9 @@ class EliminareCircumscriptie extends Comanda {
             System.out.println("EROARE: Nu este perioada de votare");
         }
 
-        for (int i = 0; i < circumscriptii.size(); i++) {
-            if (circumscriptii.get(i).getNumeCircumscriptie().equals(numeCircumscriptie)) {
-                circumscriptii.remove(i);
+        for (int i = 0; i < oldAlegeri.get(bec).circumscriptii.size(); i++) {
+            if (oldAlegeri.get(bec).circumscriptii.get(i).getNumeCircumscriptie().equals(numeCircumscriptie)) {
+                oldAlegeri.get(bec).circumscriptii.remove(i);
                 System.out.println("S-a sters circumscriptia " + numeCircumscriptie);
                 return;
             }
@@ -185,5 +185,49 @@ class EliminareCandidat extends Comanda {
         String CNP = split[1];
 
         oldAlegeri.get(indexAlegeri).eliminareCandidat(CNP);
+    }
+}
+
+class AdaugareVotant extends Comanda {
+    String idAlegeri;
+    String numeCircumscriptie;
+    String CNP;
+    int varsta;
+    boolean indemanare;
+    String nume;
+
+    public AdaugareVotant() {}
+    public AdaugareVotant(String arguments) {
+        iD = 6;
+        String[] split = arguments.split(" ");
+        idAlegeri = split[0];
+        numeCircumscriptie = split[1];
+        CNP = split[2];
+        varsta = Integer.parseInt(split[3]);
+        if (varsta < 18) {
+            System.out.println("EROARE: Varsta invalida");
+            return;
+        }
+        if (split[4].equals("da")) {
+            indemanare = true;
+        } else if (split[4].equals("nu")) {
+            indemanare = false;
+        }
+        nume = "";
+        for (int i = 5; i < split.length; i++) {
+            nume += split[i];
+            if (i != split.length - 1) {
+                nume += " ";
+            }
+        }
+
+        for (int i = 0; i < oldAlegeri.size(); i++) {
+            if (oldAlegeri.get(i).getIdAlegeri().equals(idAlegeri)) {
+                oldAlegeri.get(i).adaugareVotant(numeCircumscriptie, CNP, varsta, indemanare, nume);
+                return;
+            }
+        }
+        System.out.println("EROARE: Nu exista alegeri cu acest id");
+
     }
 }

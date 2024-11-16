@@ -2,12 +2,14 @@ package Tema1;
 
 import java.util.ArrayList;
 
-public class Alegeri extends App {
+public class Alegeri extends Comanda {
     private String idAlegeri;
     private String numeAlegeri;
     private int status;
     public ArrayList<Candidat> candidati = new ArrayList<>();
+    public ArrayList<Circumscriptie> circumscriptii = new ArrayList<>();
 
+    public Alegeri() {}
 
     public String getIdAlegeri() {
         return this.idAlegeri;
@@ -84,6 +86,18 @@ public class Alegeri extends App {
             }
         }
         System.out.println("EROARE: Nu exista un candidat cu CNP-ul " + CNP);
+
+    }
+
+    public void adaugareVotant(String numeCircumscriptie, String CNP, int varsta, boolean indemanare, String nume) {
+        for (int i = 0; i < circumscriptii.size(); i++) {
+            if (circumscriptii.get(i).getNumeCircumscriptie().equals(numeCircumscriptie)) {
+                circumscriptii.get(i).adaugareVotant(CNP, varsta, indemanare, nume);
+                return;
+            }
+        }
+        System.out.println("EROARE: Nu exista o circumscriptie cu numele " + numeCircumscriptie);
+        return;
 
     }
 

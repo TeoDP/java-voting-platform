@@ -4,6 +4,7 @@ public class Persoana {
     private String CNP;
     private int varsta;
     private String nume;
+    private boolean invalid;
 
     public String getCNP() {
         return CNP;
@@ -29,9 +30,18 @@ public class Persoana {
         this.nume = nume;
     }
 
+    public boolean getInvalid() {
+        return invalid;
+    }
+
     public Persoana() {}
 
     public Persoana(String CNP, int varsta, String nume) {
+        if (CNP.length() != 13) {
+            System.out.println("EROARE: CNP invalid");
+            this.invalid = true;
+            return;
+        }
         this.CNP = CNP;
         this.varsta = varsta;
         this.nume = nume;
