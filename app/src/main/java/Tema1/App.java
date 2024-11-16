@@ -82,6 +82,14 @@ public class App {
                 case 10:
                     aux = new OprireAlegeri(temp);
                     break;
+
+                case 11:
+                    aux = new RaportCircumscriptie(temp);
+                    break;
+
+                case 12:
+                    aux = new RaportCircumscriptie(temp);
+                    break;
             }
             temp = scan.nextLine();
 

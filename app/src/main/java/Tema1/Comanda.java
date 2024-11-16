@@ -293,7 +293,7 @@ class InregistrareVot extends Comanda {
     public InregistrareVot() {}
     public InregistrareVot(String arguments) {
         iD = 9;
-        String split[] = arguments.split(" ");
+        String[] split = arguments.split(" ");
         idAlegeri = split[0];
         numeCircumscriptie = split[1];
         CNPVotant = split[2];
@@ -341,5 +341,32 @@ class OprireAlegeri extends Comanda {
             return;
         }
         alegere.oprireAlegeri();
+    }
+}
+
+class RaportCircumscriptie extends Comanda {
+    String idAlegeri;
+    String numeCircumscriptie;
+
+    public RaportCircumscriptie() {}
+    public RaportCircumscriptie(String arguments) {
+        iD = 11;
+        String[] split = arguments.split(" ");
+        idAlegeri = split[0];
+        if (split.length == 2) {
+            numeCircumscriptie = split[1];
+        }
+        Alegeri alegere = this.findAlegere(idAlegeri);
+        if (alegere == null) {
+            return;
+        }
+
+        Raport raport = null;
+        if (numeCircumscriptie != null) {
+            raport = new Raport(alegere, numeCircumscriptie);
+        } else {
+            raport = new Raport(alegere);
+        }
+        System.out.println(raport.toString());
     }
 }
