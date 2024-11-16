@@ -2,6 +2,7 @@ package Tema1;
 
 import javax.swing.text.StyledEditorKit;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Comanda extends App{
     public int iD;
@@ -228,6 +229,57 @@ class AdaugareVotant extends Comanda {
             }
         }
         System.out.println("EROARE: Nu exista alegeri cu acest id");
+
+    }
+}
+
+class ListareCandidati extends Comanda{
+    String idAlegeri;
+
+    public ListareCandidati() {}
+    public ListareCandidati(String arguments) {
+        iD = 7;
+        idAlegeri = arguments;
+
+        Alegeri alegere = this.findAlegere(idAlegeri);
+        if (alegere == null) {
+            System.out.println("EROARE: Nu exista alegeri cu acest id");
+            return;
+        }
+
+        if (alegere.candidati.size() != 0) {
+            System.out.println("Candidatii:");
+            for (int i = 0; i < alegere.candidati.size(); i++) {
+                System.out.println(alegere.candidati.get(i).toString());
+            }
+        } else {
+            System.out.println("GOL: Nu sunt candidati");
+            return;
+        }
+    }
+}
+
+class ListareVotanti extends Comanda {
+    String idAlegeri;
+    String numeCircumscriptie;
+
+    public ListareVotanti() {}
+    public ListareVotanti(String arguments) {
+        iD = 8;
+        String[] split = arguments.split(" ");
+        idAlegeri = split[0];
+        numeCircumscriptie = split[1];
+
+        Alegeri alegere = this.findAlegere(idAlegeri);
+        if (alegere == null) {
+            System.out.println("EROARE: Nu exista alegeri cu acest id");
+            return;
+        }
+        Circumscriptie circumscriptie = alegere.findCircumscriptie(numeCircumscriptie);
+        if (circumscriptie == null) {
+            return;
+        }
+        circumscriptie.listVotanti();
 
     }
 }

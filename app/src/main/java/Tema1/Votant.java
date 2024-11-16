@@ -16,4 +16,8 @@ public class Votant extends Persoana{
         System.out.println("S-a adaugat votantul " + nume);
 
     }
+
+    public String toString() {
+        return getNume() + ' ' + getCNP() + ' ' + getVarsta();
+    }
 }

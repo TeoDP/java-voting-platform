@@ -31,6 +31,16 @@ public class Alegeri extends Comanda {
         return this.status;
     }
 
+    public Circumscriptie findCircumscriptie(String numeCircumscriptie) {
+        for (int i = 0; i < circumscriptii.size(); i++) {
+            if (circumscriptii.get(i).getNumeCircumscriptie().equals(numeCircumscriptie)) {
+                return circumscriptii.get(i);
+            }
+        }
+        System.out.println("EROARE: Nu exista o circumscriptie cu numele " + numeCircumscriptie);
+        return null;
+    }
+
     public Alegeri(String idAlegeri, String numeAlegeri) {
         for (int i = 0;  i < oldAlegeri.size(); i++) {
             if (oldAlegeri.get(i).idAlegeri.equals(idAlegeri)) {

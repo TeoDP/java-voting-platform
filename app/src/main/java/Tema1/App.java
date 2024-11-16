@@ -64,7 +64,14 @@ public class App {
                 case 6:
                     aux = new AdaugareVotant(temp);
                     break;
-                    
+
+                case 7:
+                    aux = new ListareCandidati(temp);
+                    break;
+
+                case 8:
+                    aux = new ListareVotanti(temp);
+                    break;
             }
             temp = scan.nextLine();
 

@@ -9,4 +9,9 @@ public class Candidat extends Persoana{
         this.idAlegeri = idAlegeri;
         System.out.println("S-a adaugat candidatul " + nume);
     }
+
+    @Override
+    public String toString() {
+        return getNume() + ' ' + getCNP() + ' ' + getVarsta();
+    }
 }

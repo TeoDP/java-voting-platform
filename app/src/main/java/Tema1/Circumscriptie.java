@@ -48,4 +48,15 @@ public class Circumscriptie extends Alegeri{
         Votant retval = new Votant(this.getNumeCircumscriptie(), CNP, varsta, indemanare, nume);
         votanti.add(retval);
     }
+
+    public void listVotanti() {
+        if (votanti.size() > 0) {
+            System.out.println("Votantii din " + numeCircumscriptie + ":");
+            for (int i = 0; i < votanti.size(); i++) {
+                System.out.println(votanti.get(i).toString());
+            }
+        } else {
+            System.out.println("GOL: Nu sunt votanti in " + numeCircumscriptie);
+        }
+    }
 }
