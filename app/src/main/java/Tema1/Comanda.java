@@ -392,6 +392,7 @@ class AnalizaCircumscriptie extends Comanda {
 
         if (numeCircumscriptie != null) {
             analiza = new Analiza(alegere, numeCircumscriptie);
+            System.out.println(analiza.toStringCirc("circumscriptiei"));
         } else {
             analiza = new Analiza(alegere);
         }

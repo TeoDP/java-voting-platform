@@ -6,6 +6,7 @@ import java.util.Collections;
 public class Raport extends App {
     public ArrayList<RaportCandidat> rapoarte = new ArrayList<>();
     String numeCircumscriptie;
+    String numeRegiune;
 
     public Raport() {}
 
@@ -55,6 +56,41 @@ public class Raport extends App {
             }
 
             if (votant.numeCircumscriptie.equals(numeCircumscriptie)) {
+                for (int j = 0; j < alegere.candidati.size(); j++) {
+                    Candidat candidat = alegere.candidati.get(j);
+                    RaportCandidat aux = null;
+
+                    for (int k = 0; k < rapoarte.size(); k++) {
+                        if (rapoarte.get(k).getCNP().equals(candidat.getCNP())) {
+                            aux = rapoarte.get(k);
+                            break;
+                        }
+                    }
+
+                    if (aux == null) {
+                        aux = new RaportCandidat(candidat.getCNP(), candidat.getVarsta(), candidat.getNume());
+                        rapoarte.add(aux);
+                    }
+
+                    if (votant.getVot().CNPCandidat.equals(candidat.getCNP())) {
+                        aux.voturi += 1;
+                    }
+                }
+            }
+        }
+    }
+
+    public Raport(Alegeri alegere, String numeRegiune, int nothing) {
+        this.numeRegiune = numeRegiune;
+
+        Votant votant = null;
+
+        for (int i = 0; i < alegere.votanti.size(); i++) {
+            votant = alegere.votanti.get(i);
+            if (votant.getVot() == null) {
+                continue;
+            }
+            if (votant.numeRegiune.equals(numeRegiune)) {
                 for (int j = 0; j < alegere.candidati.size(); j++) {
                     Candidat candidat = alegere.candidati.get(j);
                     RaportCandidat aux = null;

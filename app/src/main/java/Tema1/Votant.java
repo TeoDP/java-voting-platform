@@ -3,6 +3,7 @@ package Tema1;
 public class Votant extends Persoana{
     String idAlegeri;
     String numeCircumscriptie;
+    String numeRegiune;
     boolean indemanare;
     private Vot vot;
 
@@ -24,13 +25,14 @@ public class Votant extends Persoana{
 
     public Votant() {}
 
-    public Votant(String idAlegeri, String numeCircumscriptie, String CNP, int varsta, boolean indemanare, String nume) {
+    public Votant(String idAlegeri, String numeCircumscriptie, String numeRegiune, String CNP, int varsta, boolean indemanare, String nume) {
         super(CNP, varsta, nume);
 //        if (this.getInvalid() == false) {
 //            return;
 //        }
         this.idAlegeri = idAlegeri;
         this.numeCircumscriptie = numeCircumscriptie;
+        this.numeRegiune = numeRegiune;
         this.indemanare = indemanare;
         this.vot = null;
         System.out.println("S-a adaugat votantul " + nume);
