@@ -10,6 +10,10 @@ public class Circumscriptie extends Alegeri{
         return numeCircumscriptie;
     }
 
+    public String getRegiuneCircumscriptie() {
+        return regiuneCircumscriptie;
+    }
+
     public Circumscriptie(){}
 
     public Circumscriptie(String idAlegeri, String numeCircumscriptie, String regiuneCircumscriptie){

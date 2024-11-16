@@ -28,75 +28,94 @@ public class App {
 
         while (!temp.isBlank()) {
             int iD = Integer.parseInt(temp);
-            if (iD == 18 || iD == 17) {
+            if (iD == 18) {
                 oldAlegeri.clear();
                 fraude.clear();
 //                circumscriptii.clear();
                 return;
+            } else if (iD == 17) {
+                Comanda aux = new ListareAlegeri();
+
+            } else {
+                temp = scan.nextLine();
+                Comanda aux = null;
+                switch (iD) {
+                    case 0:
+                        aux = new CreareAlegeri(temp);
+                        comenzi.add(aux);
+                        break;
+
+                    case 1:
+                        aux = new StartAlegeri(temp);
+
+                        break;
+
+                    case 2:
+                        aux = new AdaugareCircumscriptie(temp);
+                        break;
+
+                    case 3:
+                        aux = new EliminareCircumscriptie(temp);
+                        break;
+
+                    case 4:
+                        aux = new AdaugareCandidat(temp);
+                        break;
+
+                    case 5:
+                        aux = new EliminareCandidat(temp);
+                        break;
+
+                    case 6:
+                        aux = new AdaugareVotant(temp);
+                        break;
+
+                    case 7:
+                        aux = new ListareCandidati(temp);
+                        break;
+
+                    case 8:
+                        aux = new ListareVotanti(temp);
+                        break;
+
+                    case 9:
+                        aux = new InregistrareVot(temp);
+                        break;
+
+                    case 10:
+                        aux = new OprireAlegeri(temp);
+                        break;
+
+                    case 11:
+                        aux = new RaportCircumscriptie(temp);
+                        break;
+
+                    case 12:
+                        aux = new RaportCircumscriptie(temp);
+                        break;
+
+                    case 13:
+                        aux = new AnalizaCircumscriptie(temp);
+                        break;
+
+                    case 14:
+                        aux = new AnalizaCircumscriptie(temp);
+                        break;
+
+                    case 15:
+                        aux = new RaportFraude(temp);
+                        break;
+
+                    case 16:
+                        aux = new StergeAlegere(temp);
+                        break;
+
+                }
             }
-            temp = scan.nextLine();
-            Comanda aux = null;
-            switch (iD) {
-                case 0:
-                    aux = new CreareAlegeri(temp);
-                    comenzi.add(aux);
-                    break;
-
-                case 1:
-                    aux = new StartAlegeri(temp);
-
-                    break;
-
-                case 2:
-                    aux = new AdaugareCircumscriptie(temp);
-                    break;
-
-                case 3:
-                    aux = new EliminareCircumscriptie(temp);
-                    break;
-
-                case 4:
-                    aux = new AdaugareCandidat(temp);
-                    break;
-
-                case 5:
-                    aux = new EliminareCandidat(temp);
-                    break;
-
-                case 6:
-                    aux = new AdaugareVotant(temp);
-                    break;
-
-                case 7:
-                    aux = new ListareCandidati(temp);
-                    break;
-
-                case 8:
-                    aux = new ListareVotanti(temp);
-                    break;
-
-                case 9:
-                    aux = new InregistrareVot(temp);
-                    break;
-
-                case 10:
-                    aux = new OprireAlegeri(temp);
-                    break;
-
-                case 11:
-                    aux = new RaportCircumscriptie(temp);
-                    break;
-
-                case 12:
-                    aux = new RaportCircumscriptie(temp);
-                    break;
-            }
-            temp = scan.nextLine();
+                temp = scan.nextLine();
 
         }
         return;
-
-
     }
 
     public static void main(String[] args) {

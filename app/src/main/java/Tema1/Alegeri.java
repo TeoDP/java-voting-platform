@@ -140,7 +140,7 @@ public class Alegeri extends Comanda {
                         return;
                     }
                 }
-                Votant retval = new Votant(numeCircumscriptie, CNP, varsta, indemanare, nume);
+                Votant retval = new Votant(idAlegeri, numeCircumscriptie, CNP, varsta, indemanare, nume);
                 votanti.add(retval);
 //                circumscriptii.get(i).adaugareVotant(CNP, varsta, indemanare, nume);
                 return;
@@ -151,6 +151,8 @@ public class Alegeri extends Comanda {
 
     }
 
-
+    public String toString() {
+        return idAlegeri + " " + numeAlegeri;
+    }
 
 }

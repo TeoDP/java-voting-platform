@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Raport extends App {
-    private ArrayList<RaportCandidat> rapoarte = new ArrayList<>();
+    public ArrayList<RaportCandidat> rapoarte = new ArrayList<>();
     String numeCircumscriptie;
 
     public Raport() {}
@@ -120,5 +120,14 @@ class RaportCandidat extends Persoana implements Comparable {
             return -1;
         }
         return 0;
+    }
+}
+
+class RaportRegiune extends Raport {
+    public String numeRegiune;
+
+    public RaportRegiune() {}
+    public RaportRegiune(Alegeri alegere, String numeRegiune) {
+
     }
 }

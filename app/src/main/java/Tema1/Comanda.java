@@ -321,7 +321,7 @@ class InregistrareVot extends Comanda {
         if (votant.numeCircumscriptie.equals(numeCircumscriptie)) {
             votant.setVot(alegere, CNPCandidat);
         } else {
-            Frauda frauda = new Frauda(CNPVotant);
+            Frauda frauda = new Frauda(votant);
         }
 
 
@@ -347,6 +347,7 @@ class OprireAlegeri extends Comanda {
 class RaportCircumscriptie extends Comanda {
     String idAlegeri;
     String numeCircumscriptie;
+    Raport raport;
 
     public RaportCircumscriptie() {}
     public RaportCircumscriptie(String arguments) {
@@ -361,12 +362,105 @@ class RaportCircumscriptie extends Comanda {
             return;
         }
 
-        Raport raport = null;
         if (numeCircumscriptie != null) {
             raport = new Raport(alegere, numeCircumscriptie);
         } else {
             raport = new Raport(alegere);
         }
         System.out.println(raport.toString());
+    }
+}
+
+class AnalizaCircumscriptie extends Comanda {
+    String idAlegeri;
+    String numeCircumscriptie;
+    Analiza analiza;
+
+    public AnalizaCircumscriptie() {}
+    public AnalizaCircumscriptie(String arguments) {
+        iD = 13;
+        String[] split = arguments.split(" ");
+        idAlegeri = split[0];
+        if (split.length == 2) {
+            numeCircumscriptie = split[1];
+        }
+
+        Alegeri alegere = this.findAlegere(idAlegeri);
+        if (alegere == null) {
+            return;
+        }
+
+        if (numeCircumscriptie != null) {
+            analiza = new Analiza(alegere, numeCircumscriptie);
+        } else {
+            analiza = new Analiza(alegere);
+        }
+
+
+
+    }
+}
+
+class RaportFraude extends Comanda {
+    String idAlegeri;
+
+    public RaportFraude() {}
+    public RaportFraude(String arguments) {
+        iD = 15;
+        idAlegeri = arguments;
+
+        Alegeri alegere = findAlegere(idAlegeri);
+        if (alegere == null) {
+            return;
+        }
+
+        for (int i = fraude.size() - 1; i >= 0; i--) {
+            Frauda frauda = fraude.get(i);
+            boolean bec = false;
+            if (frauda.getIdAlegeri().equals(idAlegeri)) {
+                if (bec == false) {
+                    System.out.println("Fraude comise:");
+                }
+                System.out.println(frauda);
+            }
+            return;
+        }
+        System.out.println("GOL: Romanii sunt cinstiti");
+
+    }
+}
+
+class StergeAlegere extends Comanda {
+    String idAlegeri;
+
+    public StergeAlegere() {}
+    public StergeAlegere(String arguments) {
+        idAlegeri = arguments;
+
+        Alegeri alegere = findAlegere(idAlegeri);
+        if (alegere == null) {
+            return;
+        } else {
+            int index = oldAlegeri.indexOf(alegere);
+            oldAlegeri.remove(index);
+            System.out.println("S-au sters alegerile " + alegere.getNumeAlegeri());
+        }
+
+    }
+}
+
+
+class ListareAlegeri extends Comanda {
+
+    public ListareAlegeri() {
+        if (oldAlegeri.size() == 0) {
+            System.out.println("GOL: Nu sunt alegeri");
+            return;
+        } else {
+            System.out.println("Alegeri:");
+            for (int i = 0; i < oldAlegeri.size(); i++) {
+                System.out.println(oldAlegeri.get(i));
+            }
+        }
     }
 }
