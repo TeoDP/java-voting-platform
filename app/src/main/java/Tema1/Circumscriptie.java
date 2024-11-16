@@ -5,7 +5,6 @@ import java.util.ArrayList;
 public class Circumscriptie extends Alegeri{
     private String numeCircumscriptie;
     private String regiuneCircumscriptie;
-    public ArrayList<Votant> votanti = new ArrayList<>();
 
     public String getNumeCircumscriptie() {
         return numeCircumscriptie;
@@ -38,25 +37,35 @@ public class Circumscriptie extends Alegeri{
         aux.circumscriptii.add(this);
     }
 
-    public void adaugareVotant(String CNP, int varsta, boolean indemanare, String nume) {
-        for (int i = 0; i < votanti.size(); i++) {
-            if (votanti.get(i).getCNP().equals(CNP)) {
-                System.out.println("EROARE: Votantul " + votanti.get(i).getNume() + " are deja acelasi CNP");
-                return;
-            }
-        }
-        Votant retval = new Votant(this.getNumeCircumscriptie(), CNP, varsta, indemanare, nume);
-        votanti.add(retval);
-    }
+//    public void adaugareVotant(String CNP, int varsta, boolean indemanare, String nume) {
+//        for (int i = 0; i < votanti.size(); i++) {
+//            if (votanti.get(i).getCNP().equals(CNP)) {
+//                System.out.println("EROARE: Votantul " + votanti.get(i).getNume() + " are deja acelasi CNP");
+//                return;
+//            }
+//        }
+//        Votant retval = new Votant(this.getNumeCircumscriptie(), CNP, varsta, indemanare, nume);
+//        votanti.add(retval);
+//    }
 
-    public void listVotanti() {
-        if (votanti.size() > 0) {
+    public void listVotanti(Alegeri alegere) {
+        if (alegere.votanti.size() > 0) {
             System.out.println("Votantii din " + numeCircumscriptie + ":");
-            for (int i = 0; i < votanti.size(); i++) {
-                System.out.println(votanti.get(i).toString());
+            for (int i = 0; i < alegere.votanti.size(); i++) {
+                System.out.println(alegere.votanti.get(i).toString());
             }
         } else {
             System.out.println("GOL: Nu sunt votanti in " + numeCircumscriptie);
         }
+    }
+
+    public Votant findVotant(String CNP) {
+        for (int i = 0; i < votanti.size(); i++) {
+            if (votanti.get(i).getCNP().equals(CNP)) {
+                return votanti.get(i);
+            }
+        }
+        System.out.println("EROARE: Nu exista un votant cu CNP-ul " + CNP);
+        return null;
     }
 }

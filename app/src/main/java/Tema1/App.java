@@ -10,6 +10,7 @@ public class App {
     public ArrayList<Comanda> comenzi = new ArrayList<>();
     static ArrayList<Alegeri> oldAlegeri = new ArrayList<>();
 //    static ArrayList<Circumscriptie> circumscriptii = new ArrayList<>();
+    static ArrayList<Frauda> fraude = new ArrayList<>();
 
 //    static Scanner scan;
 //    static int status;
@@ -29,6 +30,7 @@ public class App {
             int iD = Integer.parseInt(temp);
             if (iD == 18 || iD == 17) {
                 oldAlegeri.clear();
+                fraude.clear();
 //                circumscriptii.clear();
                 return;
             }
@@ -71,6 +73,14 @@ public class App {
 
                 case 8:
                     aux = new ListareVotanti(temp);
+                    break;
+
+                case 9:
+                    aux = new InregistrareVot(temp);
+                    break;
+
+                case 10:
+                    aux = new OprireAlegeri(temp);
                     break;
             }
             temp = scan.nextLine();

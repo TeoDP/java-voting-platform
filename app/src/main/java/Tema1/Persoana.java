@@ -1,6 +1,6 @@
 package Tema1;
 
-public class Persoana {
+public class Persoana extends App {
     private String CNP;
     private int varsta;
     private String nume;

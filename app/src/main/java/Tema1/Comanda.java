@@ -279,7 +279,67 @@ class ListareVotanti extends Comanda {
         if (circumscriptie == null) {
             return;
         }
-        circumscriptie.listVotanti();
+        circumscriptie.listVotanti(alegere);
 
+    }
+}
+
+class InregistrareVot extends Comanda {
+    String idAlegeri;
+    String numeCircumscriptie;
+    String CNPVotant;
+    String CNPCandidat;
+
+    public InregistrareVot() {}
+    public InregistrareVot(String arguments) {
+        iD = 9;
+        String split[] = arguments.split(" ");
+        idAlegeri = split[0];
+        numeCircumscriptie = split[1];
+        CNPVotant = split[2];
+        CNPCandidat = split[3];
+
+        Alegeri alegere = this.findAlegere(idAlegeri);
+        if (alegere == null) {
+            return;
+        }
+
+        Circumscriptie circumscriptie = alegere.findCircumscriptie(numeCircumscriptie);
+        if (circumscriptie == null) {
+            return;
+        }
+
+        Candidat candidat = alegere.findCandidat(CNPCandidat);
+        if (candidat == null) {
+            return;
+        }
+
+        Votant votant = alegere.findVotant(CNPVotant);
+        if (votant == null) {
+            return;
+        }
+        if (votant.numeCircumscriptie.equals(numeCircumscriptie)) {
+            votant.setVot(alegere, CNPCandidat);
+        } else {
+            Frauda frauda = new Frauda(CNPVotant);
+        }
+
+
+    }
+}
+
+class OprireAlegeri extends Comanda {
+    String idAlegeri;
+
+    public OprireAlegeri() {}
+    public OprireAlegeri(String arguments) {
+        iD = 10;
+
+        idAlegeri = arguments;
+        Alegeri alegere = this.findAlegere(idAlegeri);
+        if (alegere == null) {
+            return;
+        }
+        alegere.oprireAlegeri();
     }
 }
