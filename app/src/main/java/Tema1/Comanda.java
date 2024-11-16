@@ -135,3 +135,55 @@ class EliminareCircumscriptie extends Comanda {
 
     }
 }
+
+class AdaugareCandidat extends Comanda {
+    public String idAlegeri;
+
+    public AdaugareCandidat() {}
+    public AdaugareCandidat(String arguments) {
+        iD = 4;
+        String[] split = arguments.split(" ");
+        idAlegeri = split[0];
+        String nume = "";
+        for (int i = 3; i < split.length; i++) {
+            nume += split[i];
+            if (i != split.length - 1) {
+                nume += " ";
+            }
+        }
+        for (int i = 0; i < oldAlegeri.size(); i++) {
+            if (oldAlegeri.get(i).getIdAlegeri().equals(idAlegeri)) {
+                oldAlegeri.get(i).adaugareCandidat(idAlegeri, split[1], Integer.parseInt(split[2]), nume);
+                return;
+            }
+        }
+        System.out.println("EROARE: Nu exista alegeri cu acest id");
+    }
+}
+
+class EliminareCandidat extends Comanda {
+    public String idAlegeri;
+
+    public EliminareCandidat() {}
+    public EliminareCandidat(String arguments) {
+        iD = 5;
+        String[] split = arguments.split(" ");
+        idAlegeri = split[0];
+        int indexAlegeri = -1;
+        for (int i = 0; i < oldAlegeri.size(); i++) {
+            if (oldAlegeri.get(i).getIdAlegeri().equals(idAlegeri)) {
+                indexAlegeri = i;
+            }
+        }
+        if (indexAlegeri == -1) {
+            System.out.println("EROARE: Nu exista alegeri cu acest id");
+            return;
+        } else if (oldAlegeri.get(indexAlegeri).getStatus() != 1 ) {
+            System.out.println("EROARE: Nu este perioada de votare");
+            return;
+        }
+        String CNP = split[1];
+
+        oldAlegeri.get(indexAlegeri).eliminareCandidat(CNP);
+    }
+}

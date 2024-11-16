@@ -52,6 +52,14 @@ public class App {
                 case 3:
                     aux = new EliminareCircumscriptie(temp);
                     break;
+
+                case 4:
+                    aux = new AdaugareCandidat(temp);
+                    break;
+
+                case 5:
+                    aux = new EliminareCandidat(temp);
+                    break;
             }
             temp = scan.nextLine();
 
