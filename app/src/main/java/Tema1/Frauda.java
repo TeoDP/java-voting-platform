@@ -21,6 +21,6 @@ public class Frauda {
     }
 
     public String toString() {
-        return "in " + numeCircumscriptie + ": " + CNP + " " + nume;
+        return "In " + numeCircumscriptie + ": " + CNP + " " + nume;
     }
 }

@@ -24,7 +24,7 @@ public class Analiza extends App {
             System.out.println("GOL: Lumea nu isi exercita dreptul de vot in Romania");
             return;
         }
-        System.out.println("in Romania au fost " + nrVoturiNational + " voturi.");
+        System.out.println("In Romania au fost " + nrVoturiNational + " voturi.");
 
         ArrayList<String> regiuni = new ArrayList<>();
         for (int i = 0; i < alegere.circumscriptii.size(); i++) {
@@ -95,7 +95,7 @@ public class Analiza extends App {
             retval = "GOL: Lumea nu isi exercita dreptul de vot in " + numeCircumscriptie;
             return retval;
         }
-        retval = "in " + numeCircumscriptie + " au fost ";
+        retval = "In " + numeCircumscriptie + " au fost ";
         retval += nrVoturiCircumscriptie + " voturi din ";
         retval += nrVoturiNational + ". Adica ";
         int procent = nrVoturiCircumscriptie * 100 / nrVoturiNational;
