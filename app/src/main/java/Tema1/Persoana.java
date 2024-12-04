@@ -10,6 +10,7 @@ public class Persoana extends App {
         return CNP;
     }
 
+    // gettere si settere pentru variabilele private ale clasei
     public void setCNP(String CNP) {
         this.CNP = CNP;
     }
@@ -34,8 +35,8 @@ public class Persoana extends App {
         return invalid;
     }
 
-    public Persoana() {}
-
+    // constructor cu parametrii, apelat in principal de constructorii clasei care mostenesc clasa Persoana
+    // el seteaza variabilele de baza care definesc un obiect de tip Persoana
     public Persoana(String CNP, int varsta, String nume) {
         if (CNP.length() != 13) {
             System.out.println("EROARE: CNP invalid");

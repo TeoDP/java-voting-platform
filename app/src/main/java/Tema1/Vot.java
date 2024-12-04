@@ -5,7 +5,7 @@ public class Vot {
     String CNPVotant;
     String CNPCandidat;
 
-    public Vot() {}
+    // constructor care doar seteaza variabilele votului
     public Vot(String numeCircumscriptie, String CNPVotant, String CNPCandidat) {
         this.numeCircumscriptie = numeCircumscriptie;
         this.CNPVotant = CNPVotant;
